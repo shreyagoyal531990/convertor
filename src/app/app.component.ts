@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import * as firebase from "firebase";
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -11,6 +11,16 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  public  firebaseConfig = {
+    apiKey: "AIzaSyA7n7GYvzOUj5ry9F1LrJwrGpWrE5pnqvo",
+    authDomain: "apptunix-801eb.firebaseapp.com",
+    databaseURL: "https://apptunix-801eb.firebaseio.com",
+    projectId: "apptunix-801eb",
+    storageBucket: "apptunix-801eb.appspot.com",
+    messagingSenderId: "886475794199",
+    appId: "1:886475794199:web:bda6dbf5c57082d56c7952",
+    measurementId: "G-FT1C7Z4LSF"
+  };
   public appPages = [
     {
       title: 'Inbox',
@@ -54,9 +64,11 @@ export class AppComponent implements OnInit {
   }
 
   initializeApp() {
+    var vm=this;
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      firebase.initializeApp(vm.firebaseConfig);
     });
   }
 

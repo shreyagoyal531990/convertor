@@ -1,3 +1,33 @@
-<p>
-  currency-convertor works!
-</p>
+<div class="heading-currency">Currency Convertor</div>
+<ion-row class="currency-row">
+  <ion-col>
+<ion-input (ionChange)="enterUSDValue($event)" placeholder="Enter USD value"></ion-input>
+
+  </ion-col>
+  <ion-col>
+    <ion-button (click)="changeToRupee()" size="small">USD to Rupee</ion-button> 
+  </ion-col>
+  <ion-col *ngIf="toogle==true">
+    <div>
+      {{usd_amount}}
+
+    </div>
+  </ion-col>
+</ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-input (ionChange)="enterRupeeValue($event)" placeholder="Enter Rupee value"></ion-input>
+
+    </ion-col>
+    <ion-col>
+    <ion-button (click)="changeToUSD()" size="small">Rupee to USD</ion-button> 
+
+    </ion-col>
+    <ion-col *ngIf="toogle==true">
+      <div>
+        {{rupee_amount}}
+      </div>
+    </ion-col>
+  </ion-row>
+
