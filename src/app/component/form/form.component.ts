@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 import { ModalController } from '@ionic/angular';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -16,6 +16,7 @@ export class FormComponent implements OnInit {
   public open_sign_up_form: any;
   constructor(private formBuilder: FormBuilder,
     public auth_service: AuthenticationService,
+    private router: Router,
     public modalController: ModalController) {
     this.open_login_form = false;
     this.open_sign_up_form = false;
@@ -48,7 +49,9 @@ export class FormComponent implements OnInit {
   async loginForm() {
     try {
       await this.auth_service.login(this.login.value.email, this.login.value.password)
+     await this.router.navigate(['/second-page'])
       await this.modalController.dismiss()
+
     }
     catch (error) {
       console.log("Error for login", error)
@@ -57,6 +60,8 @@ export class FormComponent implements OnInit {
   async  signUpForm() {
     try {
       await this.auth_service.signUp(this.sign_up.value.email, this.sign_up.value.password)
+      await this.router.navigate(['/second-page'])
+
       await this.modalController.dismiss()
 
     }

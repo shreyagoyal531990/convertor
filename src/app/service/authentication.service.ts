@@ -11,6 +11,7 @@ export class AuthenticationService {
    try{
      await  firebase.auth().createUserWithEmailAndPassword(email, password)
      console.log("sign up is doner")
+     await this.login(email,password)
    }
    catch(error){
 console.log("Error during sign up",error)
