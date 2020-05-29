@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from "firebase";
 import { AuthenticationService } from './service/authentication.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -60,7 +61,8 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public auth_service: AuthenticationService
+    public auth_service: AuthenticationService,
+    public router:Router
 
   ) {
     this.initializeApp();
@@ -74,8 +76,10 @@ export class AppComponent implements OnInit {
       this.splashScreen.hide();
       firebase.initializeApp(vm.firebaseConfig);
       vm.auth_service.getLoggedUser()
-      vm.auth_service.logged_user.subscribe((data)=>{
+      vm.auth_service.logged_user.subscribe(async (data)=>{
         console.log("data after user is logged in",data)
+      await this.router.navigate(['/second-page'])
+
         // self.user=data
       },(error)=>{
         console.log("Error while retrierving logged user",error)

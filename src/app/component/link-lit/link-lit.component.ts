@@ -58,13 +58,13 @@ public append_input:any;
     console.log("To rstring function return value is",this.string_inserted_in_nodes)
   }
   ngOnInit() {
-    console.log("this.linkList",this.linklist)
+    // console.log("this.linkList",this.linklist)
 
-    this.linklist.append('abc')
-    this.linklist.append('rt')
-    this.string_inserted_in_nodes=this.linklist.toString()
+    // this.linklist.append('abc')
+    // this.linklist.append('rt')
+    // this.string_inserted_in_nodes=this.linklist.toString()
 
-    console.log("To rstring function return value is",this.string_inserted_in_nodes)
+    // console.log("To rstring function return value is",this.string_inserted_in_nodes)
   }
 
 }
