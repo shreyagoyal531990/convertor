@@ -1,20 +1,32 @@
 <div class="heading-currency">Currency Convertor</div>
 <ion-row class="currency-row">
   <ion-col>
-<ion-input (ionChange)="enterUSDValue($event)" placeholder="Enter USD value"></ion-input>
+    <ion-select (ionChange)="currentValueSelected($event)" placeholder="Currency type for Conversion" interface="popover">
+      <ion-select-option value="usd">USD</ion-select-option>
+      <ion-select-option value="rupee">Rupee</ion-select-option>
+    </ion-select>
+    <!-- <ion-button (click)="changeToRupee()" size="small">USD to Rupee</ion-button>  -->
+  </ion-col>
+  <ion-col>
+<ion-input (ionChange)="enterAmount($event)" placeholder="Enter  value"></ion-input>
 
   </ion-col>
   <ion-col>
-    <ion-button (click)="changeToRupee()" size="small">USD to Rupee</ion-button> 
+    <ion-select (ionChange)="ChangeToValueSelected($event)" placeholder="Currency to be changed to" interface="popover">
+      <ion-select-option value="usd">USD</ion-select-option>
+      <ion-select-option value="rupee">Rupee</ion-select-option>
+    </ion-select>
+    <!-- <ion-button (click)="changeToRupee()" size="small">USD to Rupee</ion-button>  -->
   </ion-col>
   <ion-col *ngIf="toogle==true">
     <div>
-      {{usd_amount}}
+      {{amount}}
+      <!-- {{usd_amount}} -->
 
     </div>
   </ion-col>
 </ion-row>
-
+<!-- 
   <ion-row>
     <ion-col>
       <ion-input (ionChange)="enterRupeeValue($event)" placeholder="Enter Rupee value"></ion-input>
@@ -29,5 +41,5 @@
         {{rupee_amount}}
       </div>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 

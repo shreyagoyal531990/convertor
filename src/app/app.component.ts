@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from "firebase";
+import { AuthenticationService } from './service/authentication.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -58,7 +59,9 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public auth_service: AuthenticationService
+
   ) {
     this.initializeApp();
   }
@@ -66,9 +69,17 @@ export class AppComponent implements OnInit {
   initializeApp() {
     var vm=this;
     this.platform.ready().then(() => {
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       firebase.initializeApp(vm.firebaseConfig);
+      vm.auth_service.getLoggedUser()
+      vm.auth_service.logged_user.subscribe((data)=>{
+        console.log("data after user is logged in",data)
+        // self.user=data
+      },(error)=>{
+        console.log("Error while retrierving logged user",error)
+      })
     });
   }
 

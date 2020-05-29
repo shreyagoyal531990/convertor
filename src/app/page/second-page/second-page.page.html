@@ -1,10 +1,14 @@
 
 
 <ion-content>
+<h3 *ngIf="user">
+  Logged user Email ID: {{user.email}}
+</h3> 
   <ion-button size="small" (click)="logOut()">Log Out</ion-button>
-  <ion-button size="small" (click)="currencyConvertor()">Log Out</ion-button>
-  <ion-button size="small" (click)="linkList()">Log Out</ion-button>
+  <ion-button size="small" (click)="currencyConvertor()">Currency convertor</ion-button>
+  <ion-button size="small" (click)="linkList()">Linke List</ion-button>
 
   <app-currency-convertor *ngIf="open_currency_convertor==true"></app-currency-convertor>
   <app-link-lit *ngIf="open_link_list==true"></app-link-lit>
 </ion-content>
+ 

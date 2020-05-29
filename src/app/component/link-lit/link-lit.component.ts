@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LinkListService } from 'src/app/service/link-list.service';
 
 @Component({
   selector: 'app-link-lit',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkLitComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public linklist:LinkListService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("this.linkList",this.linklist)
+
+    this.linklist.append('abc')
+    this.linklist.append('rt')
+    console.log("this.linkList",this.linklist)
+  }
 
 }

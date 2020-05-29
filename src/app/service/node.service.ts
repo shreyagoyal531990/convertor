@@ -4,6 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class NodeService {
+ 
+    public elem;
+    public next;
 
-  constructor() { }
+    constructor(elem) {
+        this.elem = elem;
+        this.next = null;
+    }
+
+
 }

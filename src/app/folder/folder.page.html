@@ -8,7 +8,37 @@
 </ion-header> -->
 
 <ion-content [fullscreen]="true">
-<app-admin-panel></app-admin-panel>
+  <ion-button size="small" (click)="presentform('login')">Login</ion-button>
+<ion-button size="small" (click)="presentform('sign_up')">SignUp</ion-button>
+<form [formGroup]="login_new" (ngSubmit)="loginForm()" *ngIf="form_name=='login'"  class="form-css">
+  <ion-item>
+    <ion-label>Email</ion-label>
+    <ion-input type="email" formControlName="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Password</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+  </ion-item>
+  <div class="submit-button-css">
+    <ion-button size="small" type="submit" [disabled]="!login_new.valid">Login</ion-button>
+
+  </div>
+</form>
+<form [formGroup]="sign_up" (ngSubmit)="signUpForm()"  *ngIf="form_name=='sign_up'" class="form-css">
+  <ion-item>
+    <ion-label>Email</ion-label>
+    <ion-input type="email" formControlName="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Password</ion-label>
+    <ion-input type="password" formControlName="password"></ion-input>
+  </ion-item>
+  <div  class="submit-button-css">
+    <ion-button size="small" type="submit" [disabled]="!sign_up.valid">SignUp</ion-button>
+
+  </div>
+</form>
+<!-- <app-admin-panel></app-admin-panel> -->
 <!-- 
   <ion-header collapse="condense">
     <ion-toolbar>
