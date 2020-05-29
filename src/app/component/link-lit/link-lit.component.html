@@ -1,3 +1,49 @@
-<p>
-  link-lit works!
-</p>
+<ion-row>
+  <ion-col>
+    <h3>Create</h3>
+  </ion-col>
+  <ion-col>
+    <ion-input (ionChange)="appendInput($event)"></ion-input>
+
+  </ion-col>
+  <ion-col>
+    <ion-button size="small" (click)="appendData()">Append</ion-button>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>
+    <h3>Insert</h3>
+  </ion-col>
+  <ion-col>
+    <ion-input (ionChange)="insertElementValue($event)" placeholder="Enter new value"></ion-input>
+    <ion-input (ionChange)="insertPositionValue($event)" placeholder="Enter position value"></ion-input>
+
+  </ion-col>
+  <ion-col>
+    <ion-button size="small" (click)="insertData()">Insertion</ion-button>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>
+    <h3>Delete </h3>
+  </ion-col>
+  <ion-col>
+    <ion-input placeholder="Enter the placen to delete" (ionChange)="deletePositionEntered($event)"></ion-input>
+
+  </ion-col>
+  <ion-col>
+    <ion-button size="small" (click)="deletePosition()">Delete</ion-button>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>
+    <h3>Retrieve</h3>
+  </ion-col>
+
+  <ion-col>
+    <ion-button size="small" (click)="retrieve()">Retrieve</ion-button>
+  </ion-col>
+  <ion-col *ngIf="string_inserted_in_nodes">
+    {{string_inserted_in_nodes}}
+  </ion-col>
+</ion-row>

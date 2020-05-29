@@ -12,7 +12,7 @@ class Node {
       this.next = null;
   }
 }
-
+//Create,Delete,Update,Retrieve
 export class LinkListService {
 
   constructor() { }
